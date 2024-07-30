@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Filter</title>
+</head>
+<body>
+    
+    <h2 style="text-align: center; text-transform: uppercase; color: green;">My Friends</h2>
+
+    <input type="text" name="" id="myInput" placeholder="names..." onkeyup="searchFun()">
+
+    <table class="" id="myTable" style="width: 100%; text-align: center;">
+            <tr class="header">
+                <th style="width: 40%;">Name</th>
+                <th style="width: 30%;">Degree</th>
+                <th style="width: 30%;">Professional</th>
+            </tr>
+            <tr>
+                <td>Vinod</td>
+                <td>MCS</td>
+                <td>Full Stack Developer</td>
+            </tr>
+            <tr>
+                <td>Ketan</td>
+                <td>Engineer</td>
+                <td>Wordpress Developer</td>
+            </tr>
+            <tr>
+                <td>Srinath</td>
+                <td>MCS</td>
+                <td>Full Stack Developer</td>
+            </tr>
+            <tr>
+                <td>Vipul</td>
+                <td>BSC</td>
+                <td>Front End Developer </td>
+            </tr>
+            <tr>
+                <td>Gurpeet</td>
+                <td>MCS</td>
+                <td>Email template</td>
+            </tr>
+            <tr>
+                <td>Ajay</td>
+                <td>Engineer</td>
+                <td>Android Developer</td>
+            </tr>
+    </table>
+
+    <script>
+        const searchFun = () =>{
+            const filter = document.getElementById('myInput').value.toUpperCase();
+            const myTable = document.getElementById('myTable')
+            const tr = myTable.getElementsByTagName('tr')
+
+            for (let i = 0; i < tr.length; i++) {
+                const td = tr[i].getElementsByTagName('td')[0]
+
+                if(td){
+                    const textvalue = td.textContent || td.innerHTML;
+
+                    if(textvalue.toUpperCase().indexOf(filter) > -1){
+                        tr[i].style.display = "";
+                    }else{
+                        tr[i].style.display = "none";
+                    };
+                }
+            }
+        }
+    </script>
+</body>
+</html>
